@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #000;
+  color: #fff;
+}
+
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* typing */
+.typing {
+  border-right: 2px solid white;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(40, end) forwards;
+}
+
+@keyframes typing {
+  to { width: 100%; }
+}
+
+button {
+  padding: 12px 25px;
+  background: #ff4d6d;
+  border: none;
+  color: white;
+  border-radius: 30px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+/* memory */
+.memory {
+  max-width: 550px;
+  margin: 60px auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s;
+}
+
+.memory img {
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 15px;
+}
+
+/* gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* hearts */
+.heart {
+  position: fixed;
+  bottom: -10px;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+  to { transform: translateY(-100vh); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD -->
+<script>
+let pass = prompt("Enter the password ❤️");
+if(pass !== "blessy"){
+  document.body.innerHTML = "Only for Blessy ❤️";
+}
+</script>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="typing">Happy Birthday, Blessy ❤️</h1>
+  <p>
+    A little corner of the internet made only for you…  
+    This isn’t just a website — it’s a place where I kept us.
+  </p>
+  <button onclick="startExperience()">Enter our story</button>
+</section>
+
+<section id="story">
+
+<h2>How It All Started</h2>
+
+<div class="memory">
+  <p>
+    It all began during our MBBS days — full of chaos, exams, and sleepless nights.  
+    I never knew I was meeting someone who would become my home.  
+    And slowly, without even realizing… you became everything.
+  </p>
+  <img src="photo1.jpg">
+</div>
+
+<div class="memory">
+  <p>
+    From random talks to long conversations,  
+    from simple moments to unforgettable memories —  
+    we became us.
+  </p>
+  <img src="photo2.jpg">
+</div>
+
+<h2>Things I Love About You</h2>
+
+<div class="memory">
+  <p>
+    I love your laugh. The real one.  
+    I love how you stayed through every phase.  
+    And I love how you made everything feel lighter.
+  </p>
+  <img src="photo3.jpg">
+</div>
+
+<div class="memory">
+  <p>
+    You didn’t just come into my life —  
+    you changed it in the most beautiful way.
+  </p>
+  <img src="photo4.jpg">
+</div>
+
+<h2>Our Gallery</h2>
+
+<div class="gallery">
+  <img src="photo5.jpg">
+  <img src="photo6.jpg">
+  <img src="photo7.jpg">
+  <img src="photo8.jpg">
+</div>
+
+<h2>The Future</h2>
+
+<div class="memory">
+  <p>
+    It’s been 4 years…  
+    and still feels like just the beginning.  
+    I just want more memories, more laughter, more us.
+  </p>
+  <img src="photo9.jpg">
+</div>
+
+<h2>For You</h2>
+
+<div class="memory">
+  <p>
+    Happy Birthday, Blessy ❤️  
+    If I had to choose again…  
+    I would still choose you. Every single time.  
+
+    — Himanshu
+  </p>
+</div>
+
+</section>
+
+<script>
+// start everything
+function startExperience(){
+  document.getElementById("story").scrollIntoView({behavior:"smooth"});
+
+  var music = document.getElementById("bgMusic");
+  music.volume = 0.3;
+  music.play();
+}
+
+// animation
+const mem = document.querySelectorAll('.memory');
+window.addEventListener('scroll', ()=>{
+  mem.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight - 50){
+      el.classList.add('show');
+    }
+  });
+});
+
+// hearts
+setInterval(()=>{
+  const h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>
